@@ -205,6 +205,21 @@ tags$body(
                                       textInput(inputId = "probs",
                                                 label = "Haplotype frequency distribution (probs)",
                                                 value = "0.20, 0.20, 0.20, 0.20, 0.20")
+                                      ,
+                                      
+                                      checkboxInput(inputId = "subsampleseqs_2", 
+                                                    label = "Subsample DNA sequences",
+                                                    value = FALSE),
+                                      
+                                      conditionalPanel(condition = "input.subsampleseqs_2 == 1",
+                                                       numericInput(inputId = "prop",
+                                                                    label = "Proportion of DNA sequences to subsample (prop.seqs)",
+                                                                    value = NULL,
+                                                                    min = 0,
+                                                                    max = 1,
+                                                                    step = 0.01),
+                                                       
+                                      )
                      ))
                    ),
           sidebarPanel(
@@ -217,7 +232,6 @@ tags$body(
               )
             )
           )
-          
         ), # end condition panel
         
         mainPanel(

@@ -21,16 +21,47 @@ server <- function(input, output) {
     
     # find if simulation type is real or hypothetical
     if(input$switch == TRUE){  # Real
-      print("REAL")
+      filename <- input$file
+      subsample <- input$subsampleseqs
+      prop = input$prop
+      if(subsample == FALSE){
+        prop = NULL
+      }
+      # creating a HACSObj object by running HACReal()
+      HACSObj <- HACReal(perms = permutations, p = p ,conf.level = 0.95,
+                        subsample = subsample, prop = prop, progress = TRUE,
+                         num.iters = NULL, 
+                         filename = "output")
+      output$plot <- renderPlot({
+        HAC.simrep(HACSObj)
+      })
+      
     }else{ # Hypothetical
       N <- input$N
       Hstar <- input$Hstar
-      #probs <- input$probs
-      probs <- rep(1/Hstar, Hstar)
-      HACSObj <- HACHypothetical(N = N,Hstar = Hstar,probs = probs,perms = permutations, p = p, 
-                                   conf.level = conf.level)
+      x <- input$probs
+      split_str <- strsplit(x, ",")
+      probs <- as.numeric(unlist(split_str))
+      subsample <- input$subsampleseqs_2
+      prop = input$prop
+      if(subsample == FALSE){
+        prop = NULL
+      }
       
       output$plot <- renderPlot({
+        validate(
+          need(N >= Hstar,'N must be greater than or equal to Hstar'),
+          need(N > 1,'N must be greater than 1'),
+          need(Hstar > 1,'H* must be greater than 1'),
+          need(isTRUE(all.equal(1, sum(probs), tolerance = .Machine$double.eps^0.25)),'probs must sum to 1'),
+          need(length(probs) == Hstar,'probs must have Hstar elements'),
+          need((permutations > 1),'perms must be greater than 1'),
+          need((p > 0) && (p <= 1),'p must be greater than 0 and less than or equal to 1')
+        )
+        HACSObj <- HACHypothetical(N = N,Hstar = Hstar,probs = probs,perms = permutations, p = p, 
+                                   conf.level = conf.level,
+                                   subsample = subsample, prop = prop,
+                                   progress = TRUE, num.iters = NULL, filename = NULL)
         HAC.simrep(HACSObj)
       })
     }
