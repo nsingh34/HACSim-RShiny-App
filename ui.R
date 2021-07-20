@@ -5,7 +5,8 @@
 
 # importing shiny library
 library(shiny)
-
+library(shinydashboard)
+library(shinydashboardPlus)
 # importing shiny widgets
 library(shinyWidgets)
 
@@ -22,6 +23,7 @@ library(ggplot2)
 logo <- a(href = "", img(src = "HACSim.png", alt = "HACSim: Haplotype Accumulation Curve Simulator", height = "100px",width="300px"))
 
 tags$body(
+  tags$style(type="text/css", "body {padding-top: 80px;}"),
   tagList(
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
@@ -29,6 +31,7 @@ tags$body(
   ),
   # navigation bar to navigate through page
   navbarPage(
+    position = "fixed-top",
     title = logo,
     selected = "Home",
     windowTitle = "HACSim: Haplotype Accumulation Curve Simulator",
@@ -41,16 +44,60 @@ tags$body(
     tabPanel(
       "Home",
       selected = TRUE,
-      div(
-        style = "position: fixed; left: 0; top: 0; z-index: -1;",
-        img(src = "home_page.jpeg", style = "min-width: 100vw; min-height: 100vh;")
+      carousel(
+        id = "mycarousel",
+        indicators = FALSE,
+        carouselItem(
+          active = TRUE,
+          tags$img(src = "a.gif",style = "min-width: 100vw; min-height: 100vh;")
+        ),
+        carouselItem(
+          tags$img(src = "b.gif",style = "min-width: 100vw; min-height: 100vh;")
+        ),
+        carouselItem(
+          tags$img(src = "c.gif",style = "min-width: 100vw; min-height: 100vh;")
+        ),
+        tags$blockquote(h1("HACSim helps individuals to find required specimen sample sizes necessary for genetic diversity assessment
+      !",style="font-size:250%; color:white;position:fixed;left:5%;top:30%;
+                  right:20%"))
       ),
-      tags$blockquote(h1("HACSim helps individuals to find required specimen sample sizes necessary for genetic diversity assessment
-      !",style="font-size:250%; color:white;position:fixed;left:5%;top:40%;
-                  right:35%"))
-    ),
+      tags$blockquote(h3("Abstract"),"Assessing levels of standing genetic variation within species requires a robust sampling
+for the purpose of accurate specimen identification using molecular techniques such
+as DNA barcoding; however, statistical estimators for what constitutes a robust sample
+are currently lacking. Moreover, such estimates are needed because most species are
+currently represented by only one or a few sequences in existing databases, which
+can safely be assumed to be undersampled. Unfortunately, sample sizes of 5–10
+specimens per species typically seen in DNA barcoding studies are often insufficient to
+adequately capture within-species genetic diversity. Here, we introduce a novel iterative
+extrapolation simulation algorithm of haplotype accumulation curves, called HACSim
+(Haplotype Accumulation Curve Simulator) that can be employed to calculate likely
+sample sizes needed to observe the full range of DNA barcode haplotype variation that
+exists for a species. Using uniform haplotype and non-uniform haplotype frequency
+distributions, the notion of sampling sufficiency (the sample size at which sampling
+accuracy is maximized and above which no new sampling information is likely to be
+gained) can be gleaned. HACSim can be employed in two primary ways to estimate
+specimen sample sizes: (1) to simulate haplotype sampling in hypothetical species,
+and (2) to simulate haplotype sampling in real species mined from public reference
+sequence databases like the Barcode of Life Data Systems (BOLD) or GenBank for any
+genomic marker of interest. While our algorithm is globally convergent, runtime is
+heavily dependent on initial sample sizes and skewness of the corresponding haplotype
+frequency distribution.",style="font-size:100%; color:white;position:fixed;left:2%;bottom:2%;")
+      ),
+    tabPanel("Tutorial",
+             includeHTML("www/tutorial.html"),
+             div(
+               style = "position: fixed; left: 0; top: 0; z-index: -1;",
+               img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
+             )
+             ),
     tabPanel("About",
-             div(tabsetPanel(tabPanel("HACSim?",
+             div(
+               div(
+                 style = "position: fixed; left: 0; top: 0; z-index: -1;",
+                 img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
+               ),
+               style="position:fixed;top:35%;",
+               tabsetPanel(tabPanel("HACSim?",
                                       tags$blockquote(h3("What is HACSim and how does it work?"),
                                                       p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
                         for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
@@ -82,11 +129,16 @@ tags$body(
                              tabPanel(
                                "Author",
                                tags$blockquote(h3("Jarrett D. Phillips"),
-                                               p("This is a placeholer and needs to be placed by something.....")),
+                                               p("Email: phillipsjarrett1@gmail.com")),
                                tags$blockquote(h3("Navdeep Singh"),
-                                               p("This is a placeholer and needs to be placed by something....."))
+                                               p("Email: nsingh34@uoguelph.ca"))
                              ),
                              tabPanel("Citation",
+                                      tags$blockquote(h3(tags$a("Citation",href="Phillips et al. (2020).pdf")),
+                                                      p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                    R package to estimate intraspecific sample sizes for genetic diversity assessment 
+                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")
+                                                      ,style="font-size:120%; color:black;"),
                                       tags$blockquote(h3(tags$a("Citation",href="Phillips et al. (2020).pdf")),
                                                       p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
@@ -106,10 +158,10 @@ tags$body(
           block = TRUE
         )
       ),
-      titlePanel("Genetic Diversity Assessment"),
+      titlePanel(h1("Genetic Diversity Assessment")),
       div(
         style = "position: fixed; left: 0; top: 0; z-index: -1;",
-        img(src = "run_sim.jpg", style = "min-width: 100vw; min-height: 100vh;")
+        img(src = "run.gif", style = "min-width: 100vw; min-height: 100vh;")
       ),
       sidebarLayout(
         tabsetPanel(
@@ -146,6 +198,7 @@ tags$body(
                          size ="sm",
                          block = FALSE
                        )
+                       ,helpText("Disclaimer: Simulation may take time to run depending on the size of dataset and parameters.")
                        
                      ) # end side bar Panel
                    
@@ -163,19 +216,50 @@ tags$body(
                        offStatus = "danger"
                      ),
                      conditionalPanel(condition = "input.switch == 1",
-                                      fileInput(inputId = "file", 
-                                                label = "Choose FASTA file",
-                                                multiple = FALSE,
-                                                accept = ".fas",
-                                                buttonLabel = "Browse...",
-                                                width = '20%',
-                                                placeholder = "No file selected"
+                                      h3("How to choose a FASTA file?"),
+                                      helpText("Fill in all the required parameters for your simulation and hit run, a 
+                                               popup window will appear and than choose .fas file."),
+                                      h3("Preloaded example for real species (Lake whitefish (Coregonus clupeaformis))"),
+                                      switchInput(
+                                        inputId = "Id015",
+                                        onLabel = "Load",
+                                        offLabel = "Off",
+                                        value = FALSE,
+                                        onStatus = "success", 
+                                        offStatus = "danger"
                                       ),
-                                      
+                                      conditionalPanel(condition = "input.Id015 == 0",
                                       checkboxInput(inputId = "subsampleseqs", 
                                                     label = "Subsample DNA sequences",
                                                     value = FALSE),
-                                      
+                                      helpText("Note: Inputted DNA sequences should not contain missing and/or ambiguous 
+	                                       nucleotides, which may lead to overestimation of the number of 
+	                                       observed unique haplotypes. Consider excluding sequences or alignment 
+	                                       sites containing these data. If missing and/or ambiguous bases occur 
+	                                       at the ends of sequences, further alignment trimming is an option.")
+                                      ),
+                                      conditionalPanel(condition = "input.Id015 == 1",
+                                                       tags$a(
+                                                         tags$i(" Coregonus clupeaformis_aligned.fas",class="fas fa-file-download"),href = "Coregonus clupeaformis_aligned.fas",download = "Coregonus clupeaformis_aligned.fas"),
+                                                       br(),
+                                                       tags$progress("100%",value = "100",max="100"),
+                                                       tags$text("Upload complete ✓"),
+                                                       numericInput(inputId = "N_load",
+                                                                    label = "Number of observed specimens (N)",
+                                                                    value = 235,
+                                                                    min = 2),
+                                                       
+                                                       numericInput(inputId = "Hstar_load",
+                                                                    label = "Number of observed haplotypes (H*)",
+                                                                    value = 15,
+                                                                    min = 1),
+                                                       
+                                                       textInput(inputId = "probs_load",
+                                                                 label = "Haplotype frequency distribution (probs)",
+                                                                 value = "0.914893617,0.012765957,0.012765957,0.008510638,0.008510638,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319"),
+                                                       helpText("Preloaded examples for real species (Lake whitefish (Coregonus clupeaformis)) has been successfully loaded
+                                                                .Go back to main interface and hit run.")
+                                      ),
                                       conditionalPanel(condition = "input.subsampleseqs == 1",
                                                        numericInput(inputId = "prop",
                                                                     label = "Proportion of DNA sequences to subsample (prop.seqs)",
@@ -184,12 +268,8 @@ tags$body(
                                                                     max = 1,
                                                                     step = 0.01),
                                                        
-                                      ),
-                                      helpText("Note: Inputted DNA sequences should not contain missing and/or ambiguous 
-	                                       nucleotides, which may lead to overestimation of the number of 
-	                                       observed unique haplotypes. Consider excluding sequences or alignment 
-	                                       sites containing these data. If missing and/or ambiguous bases occur 
-	                                       at the ends of sequences, further alignment trimming is an option.")
+                                      )
+                                      
                      ),
                      conditionalPanel(condition = "input.switch != 1",
                                       numericInput(inputId = "N",
@@ -225,9 +305,11 @@ tags$body(
           sidebarPanel(
             width = 12,
             wellPanel(
+              style = "background:white;",
               h3("Result Panel"),
+              verbatimTextOutput("text"),
               withSpinner(
-                image = "loading.gif", image.width = 100, image.height = 100,
+                image = "giphy.gif", image.width = 200, image.height = 200,
                 plotOutput("plot")
               )
             )

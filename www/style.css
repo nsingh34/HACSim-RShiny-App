@@ -65,4 +65,11 @@ background: linear-gradient(0deg, rgba(14,202,204,0) 23%, rgba(0,0,0,0.795955882
   float: right;
 }
 
+#mycarousel {
+  position: fixed; 
+  left: 0; 
+  top: 0;
+  z-index: -1;
+}
+
 
