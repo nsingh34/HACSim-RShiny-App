@@ -58,7 +58,7 @@ tags$body(
           tags$img(src = "c.gif",style = "min-width: 100vw; min-height: 100vh;")
         ),
         tags$blockquote(h1("HACSim helps individuals to find required specimen sample sizes necessary for genetic diversity assessment
-      !",style="font-size:250%; color:white;position:fixed;left:5%;top:30%;
+      !",style="font-size:2.5vw; color:white;position:fixed;left:5%;top:30%;
                   right:20%"))
       ),
       tags$blockquote(h3("Abstract"),"Assessing levels of standing genetic variation within species requires a robust sampling
@@ -81,7 +81,7 @@ and (2) to simulate haplotype sampling in real species mined from public referen
 sequence databases like the Barcode of Life Data Systems (BOLD) or GenBank for any
 genomic marker of interest. While our algorithm is globally convergent, runtime is
 heavily dependent on initial sample sizes and skewness of the corresponding haplotype
-frequency distribution.",style="font-size:100%; color:white;position:fixed;left:2%;bottom:2%;")
+frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2%;bottom:2%;")
       ),
     tabPanel("Tutorial",
              includeHTML("www/tutorial.html"),
@@ -131,7 +131,7 @@ frequency distribution.",style="font-size:100%; color:white;position:fixed;left:
                                tags$blockquote(h3("Jarrett D. Phillips"),
                                                p("Email: phillipsjarrett1@gmail.com")),
                                tags$blockquote(h3("Navdeep Singh"),
-                                               p("Email: nsingh34@uoguelph.ca"))
+                                               p("Email: navuonweb@gmail.com"))
                              ),
                              tabPanel("Citation",
                                       tags$blockquote(h3(tags$a("Citation",href="Phillips et al. (2020).pdf")),
@@ -250,7 +250,7 @@ frequency distribution.",style="font-size:100%; color:white;position:fixed;left:
                                                                     min = 2),
                                                        
                                                        numericInput(inputId = "Hstar_load",
-                                                                    label = "Number of observed haplotypes (H*)",
+                                                                    label = "Number of observed haplotypes (Hstar)",
                                                                     value = 15,
                                                                     min = 1),
                                                        
@@ -278,7 +278,7 @@ frequency distribution.",style="font-size:100%; color:white;position:fixed;left:
                                                    min = 2),
                                       
                                       numericInput(inputId = "Hstar",
-                                                   label = "Number of observed haplotypes (H*)",
+                                                   label = "Number of observed haplotypes (Hstar)",
                                                    value = 5,
                                                    min = 1),
                                       
@@ -292,9 +292,9 @@ frequency distribution.",style="font-size:100%; color:white;position:fixed;left:
                                                     value = FALSE),
                                       
                                       conditionalPanel(condition = "input.subsampleseqs_2 == 1",
-                                                       numericInput(inputId = "prop",
+                                                       numericInput(inputId = "prop_2",
                                                                     label = "Proportion of DNA sequences to subsample (prop.seqs)",
-                                                                    value = NULL,
+                                                                    value = "0.25",
                                                                     min = 0,
                                                                     max = 1,
                                                                     step = 0.01),

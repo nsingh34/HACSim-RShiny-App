@@ -23,6 +23,11 @@
     #myBtn:hover {
       background-color: #555;
     }
+    
+    .responsive {
+      width: 100%;
+      height: auto;
+    }
     </style>
   </head>
   <body>
@@ -31,121 +36,48 @@
       margin: auto 0;">
       <h3>HACSim</h3>
       <div class="panel-group">
-        <div class="panel panel-warning">
-          <div class="panel-heading">What is HACSim and how does it work?</div>
-          <div class="panel-body">
-            <p>HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
-               for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
-               sample sizes for DNA barcoding, specifically pertaining to recovery of total haplotype variation that may 
-               exist for a given species.</p>
-            <p>Most DNA barcoding studies conducted to date suggest sampling between 5-10 individuals per 
-              species due to research costs. However, it has been shown that low sample sizes can greatly 
-              underestimate haplotype diversity for geograpically-widespread taxa. The present algorithm 
-              is in place to more accurately determine sample sizes that are needed to uncover all putative 
-              haplotypes that may exist for a given species. Implications of such an approach include 
-              accelerating the construction and growth of DNA barcode reference libraries for species of 
-              interest within the <a href = "http://v4.boldsystems.org/"> Barcode of Life Data Systems(BOLD)</a>
-              or similar database such as <a href = "https://www.ncbi.nlm.nih.gov/genbank/">GenBank</a></p>
-            <p>Within the simulation algorithm, species haplotypes are treated as distinct character labels 
-              (1, 2, ...), where 1 denotes the most frequent haplotype, 2 denotes the second-most frequent 
-              haplotype, and so forth. The algorithm then randomly samples species haplotype labels in an 
-              iterative fashion, until all unique haplotypes have been observed. The idea is that levels of 
-              species haplotypic variation that are currently catalogued in BOLD can serve as proxies for 
-              total haplotype diversity that may exist for a given species</p>
-            <p>Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
-               (e.g., cytb).</p>
-          </div>
-        </div>
-    
-        <div class="panel panel-primary">
-          <div class="panel-heading">HACSim comprises three main functions:</div>
-          <div class="panel-body">
-            <p>> HACHypothetical()</p>
-            <p>> HACReal()</p>
-            <p>> HAC.simrep()</p>
-            <p>Function arguments to HAC.simrep() are passed from either HACHypothetical() or HACReal() as follows:</p>
-            <ul>
-              <li><strong>N</strong> = Number of observed individuals (DNA sequences) of a given species</li>
-              <li><strong>Hstar</strong> = Number of observed haplotypes (unique DNA sequences) for a given species</li>
-              <li><strong>probs</strong> = Haplotype frequency distribution vector for a given species (must have a length of <strong>Hstar</strong>and sum to 1)</li>
-              <li><strong>perms</strong> = Number of permutations to generate species haplotype accumulation curve (<strong>perms</strong> = 10000 by default)</li>
-              <li><strong>p</strong> = Proportion of species haplotypes to recover (<strong>p</strong> = 0.95 by default)</li>
-              <li><strong>conf.level</strong> = Desired confidence leval for graphical output and confidence interval calculation
-    (<strong>conf.level</strong> = 0.95 by default)</li>
-              <li><strong>subsample</strong> = Should a random subsample of haplotype labels or DNA sequences be taken (<strong>subsample</strong> = FALSE by default)</li>
-              <li><strong>prop</strong> = Proportion of haplotype labels or DNA sequences to sample when <strong>subsample</strong> = TRUE
-    (<strong>prop</strong> = NULL by default)</li>
-              <li><strong>num.iters</strong> = Number of iterations to compute (<strong>num.iters</strong> = NULL (i.e., all) by default; can also be 1)</li>
-              <li><strong>progress</strong> = Should iteration output be printed to the R console? (<strong>progress</strong> = TRUE by default)</li>
-              <li><strong>filename</strong> = Name of file where simulation results are to be saved (<strong>filename</strong> = NULL by default)</li>
-            </ul>
-            <p><strong>perms</strong> controls the smoothness of generated haplotype accumulation curves. As <strong>perms</strong> → ∞, haplotype accumulation curves "smooth out" and approach H* asymptotically.</p>
-            <p>Resulting output for the first iteration of HAC.simrep() reflects current levels of sampling effort found within BOLD for a given species. If the desired level of haplotype recovery is not reached, then perform successive iterations are performed until the desired fraction of haplotypes captured is at least <strong>p</strong>.</p>
-            <p>
-              Setting <strong>p</strong> = 0.95 corresponds to uncovering 95% of all haplotypes that may exist for a given species. At this level, the generated haplotype accumulation curve reaches a slope close to zero and further sampling effort is unlikely to uncover any new haplotypes.
-            </p>
-            <p>
-              HAC.simrep() outputs simple "Measures of Sampling Closeness" for overall haplotype sampling completeness. Both absolute (counts) and relative (proportions) of species haplotypes sampled (observed) and missing (unobserved) are reported, along with estimates of the required sample size needed to uncover the specified number of species haplotypes and the number of additional specimens needed to be randomly sampled for a given species. In addition to haplotype accumulation curves, plots depicting species haplotype frequency distributions are also displayed.
-            </p>
-            <p>
-              Measures of Sampling Closeness for overall haplotype/specimen sampling completeness are given by the following fomulae (Phillips et al., 2015):
-              <ul>
-                <li>Mean number of haplotypes sampled: H</li>
-                <li>Number of haplotypes not sampled: H* - H</li>
-                <li>Proportion of haplotypes (specimens) sampled: H/H*</li>
-                <li>Proportion of haplotypes (specimens) not sampled: (H* - H)/H*</li>
-                <li>Mean value of N*: (N x H*)/H</li>
-                <li>Mean number of specimens not sampled: N* - N </li>
-              </ul>
-            </p>
-            <p>In addition to users specifying unique values for N, Hstar and probs, default parameters can also be altered in order to produce more interesting output (e.g., subsampling of haplotype labels or DNA sequences). It may be necessary to increase perms in order to smooth out the curves, but this will increase algorithm runtime substantially.</p>
-          </div>
-        </div>
-    
         <div class="panel panel-success">
           <div class="panel-heading">Running the Simulation</div>
           <div class="panel-body">
-            <p>To run the simulation follow the steps below:</p>
+            <p>To successfully run the simulation follow the steps listed below:</p>
             <ul>
               <li>
-                <p>Click on the run simulation button to start Haplotype Accumulation Curve Simulator.</p>
-                <img src="/run_button.png" alt="Start Simulator" width="500" height="333" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
+                <p>Click on the 'run simulation' button located at the top right corner of the home page to start Haplotype Accumulation Curve Simulator.</p>
+                <img src="/run_button.png" alt="Start Simulator" class="responsive" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
               </li>
               <li>
-                <p>Set up all desired algorithm input parameters in main interface and sub interface.</p>
-                <small>First click on the main interface and fill in the desired input parameters. Next, fill all the desired
-                input parameters in either real or hypothetical species.</small>
+                <p>Enter all the required arguments in the main interface and sub interface.</p>
+                <small>First click on the main interface and fill in the desired number of permutations, proportion of haplotypes to recover, confidence level for calculations and plotting. Next, go to the sub interface and select either real or hypothetical species simulation type.</small>
                 <div class="row">
-                <div class="column" style="float: left;width: 33.33%;padding: 5px;">
-                  <img src="/main_interface.png" alt="Main interface" width="500" height="333" /img>
+                <div class="column" style="float: left;width: 50%;padding: 5px;">
+                  <img src="/main_interface.png" alt="Main interface" class="responsive" /img>
                 </div>
-                <div class="column" style="float: left;width: 33.33%;padding: 5px;">
-                  <img src="/sub_interface.png" alt="Sub interface" width="500" height="333" /img>
+                <div class="column" style="float: left;width: 50%;padding: 5px;">
+                  <img src="/sub_interface.png" alt="Sub interface" class="responsive"/img>
                 </div>
               </div>
               </li>
               <li>
                 <p>
-                  If user seletced real species simulation type, then follow the instructions in the picture below.
+                  If user has selected real species simulation type in the sub interface, then follow the instructions in the picture below.
                 </p>
-                <img src="/real.png" alt="Real species" width="500" height="333" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
+                <img src="/real.png" alt="Real species" class="responsive" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
               </li>
               <li>
                 <p>
                   In hypothetical species simulation type, fill in the required input arguments to complete the steps.
                 </p>
-                <img src="/hypothetical.png" alt="Start Simulator" width="500" height="333" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
+                <img src="/hypothetical.png" alt="Start Simulator" class="responsive" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
               </li>
               <li>
-                <p>Final step, if you desired to input subsample DNA sequences then tick it and fill in the input for
-                subsample as shown below. Once you completed above mentioned steps than hit run and result will be outputted
-                into result panel.</p>
+                <p>User has an option to input proportion of DNA sequences to subsample. To do so, click on the checkbox called 'Subsample DNA Sequences in sub interface and fill in the numeric value in the input field.</p>
+                <p>Once user has completed all the steps, hit run.</p>
                 <div class="row">
-                <div class="column" style="float: left;width: 33.33%;padding: 5px;">
-                  <img src="/subsample.png" alt="subsample DNA sequences" width="500" height="333" /img>
+                <div class="column" style="float: left;width: 50%;padding: 5px;">
+                  <img src="/subsample.png" alt="subsample DNA sequences" class="responsive" /img>
                 </div>
-                <div class="column" style="float: left;width: 33.33%;padding: 5px;">
-                  <img src="/hit.png" alt="Run button" width="500" height="333" /img>
+                <div class="column" style="float: left;width: 50%;padding: 5px;">
+                  <img src="/hit.png" alt="Run button" class="responsive" /img>
                 </div>
               </div>
               </li>
@@ -153,56 +85,11 @@
             <p>
               Depending on the size of input parameters to the simulation, the algorithm in its current form, can be quite slow to reach full convergence. For a species with equal haplotype frequency, saturation of the haplotype accumulation curve is (usually) reached very rapidly (one exception occurs when N = Hstar). On the other hand, for a species with many rare haplotypes, the generated haplotype accumulation curve will take signficantly longer to reach an asymptote, since rare haplotypes will not be sampled as frequently as dominant ones.
             </p>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">Examples</div>
-          <div class="panel-body">
+            <p>Below is the list of downloadable FASTA files. Click on the file name to download it. User can use downloaded file in real species simulation.</p>
             <ul>
-              1. Equal haplotype frequency - Hypothetical species
               <li>
-                N = 100
+                <a href="/Coregonus clupeaformis_aligned.fas" download>Coregonus clupeaformis_aligned</a>
               </li>
-              <li>
-               H* = 10
-              </li>
-              <li>
-                probs = rep(1/H*, H*)
-              </li>
-              <blockquote>> HACHypothetical(N, Hstar, probs, ...) # additional parameters can be specified if desired</blockquote>
-            </ul>
-            <ul>
-              2. Unequal haplotype frequency - Lake whitefish (Coregonus clupeaformis)
-              <li>
-                N = 235
-              </li>
-              <li>
-               H* = 15
-              </li>
-              <li>
-                probs = c(215/N, rep(3/N, 2), rep(2/N, 2), rep(1/N, 10)) (or see Custom User Data below)
-              </li>
-              <blockquote>> HACReal() # no arguments are required to be inputted; however, users can provide altered defaults
-    </blockquote>
-            </ul>
-          </div>
-        </div>
-        <div class="panel panel-info">
-          <div class="panel-heading">Custom User Data</div>
-          <div class="panel-body">
-            <p>
-              Users can implement their own custom species barcode datasets mined from BOLD (not necessarily 5'-COI) through setting the argument <strong>input.seqs</strong> to TRUE. Values for <strong>N</strong>, <strong>Hstar</strong> and <strong>probs</strong> are calculated automatically via the R packages 'ape' (Analyses of Phylogenetics and Evolution; Paradis, 2004) and 'pegas' (Phylogenetics and Evolution in R; Paradis et al. (2010)), so there is no need to specify these parameters before running HAC.simrep(). When HAC.simrep() is run, a pop-up window will appear prompting the user to select a previously aligned/trimmed FASTA DNA sequence file.
-            </p>
-            <p>
-              <strong>NOTE</strong>: Inputted sequence alignment files should be free of missing/ambiguous nucleotide data (Ns, gaps (--) and IUPAC ambiguity codes) in order to avoid overestimation of intraspecific haplotype diversity.
-            </p>
-            <p>Users can subsample DNA sequences or haplotype labels with the arguments <strong>subsample</strong> and <strong>prop</strong>. This can be employed to simulate migration/gene flow of individuals/haplotypes, or to reduce computation overhead.</p>
-            <p>
-              <a href="/Coregonus clupeaformis_aligned.fas" download>Click here</a>
-              to download aligned and trimmed 652 bp 5'-COI barcode sequences for Lake whitefish -Coregonus clupeaformis (Example 2 above)
-            </p>
-            <p>Below is the list of downloadable FASTA files. Click on the file name and download it. User can use it in real species simulation.</p>
-            <ul>
               <li>
                 <a href="/Acyrthosiphon pisum_aligned.fas" download>Acyrthosiphon pisum_aligned</a>
               </li>
