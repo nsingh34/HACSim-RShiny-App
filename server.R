@@ -9,7 +9,7 @@ library(HACSim)
 
 # importing ggplot2
 library(ggplot2)
-
+library(stringr)
 library(shinymeta)
 
 # Define server logic required to draw a histogram
@@ -20,17 +20,57 @@ server <- function(input, output) {
     permutations <- input$perms
     p <- input$p
     conf.level <- input$conf.level
+    progress <- input$progress_bar
     
     # find if simulation type is real or hypothetical
     if(input$switch == TRUE){  # Real
       
       if(input$Id015 == TRUE){ # Pre loaded example
+        
         values <- reactiveValues()
-        N <- input$N_load
-        Hstar <- input$Hstar_load
-        x <- input$probs_load
+        N <- input$N_load_a
+        Hstar <- input$Hstar_load_a
+        x <- input$probs_load_a
         split_str <- strsplit(x, ",")
         probs <- as.numeric(unlist(split_str))
+        
+        if(input$Id008 == 'Lake whitefish (Coregonus clupeaformis)'){
+          N <- input$N_load_a
+          Hstar <- input$Hstar_load_a
+          x <- input$probs_load_a
+          split_str <- strsplit(x, ",")
+          probs <- as.numeric(unlist(split_str))
+        }else if(input$Id008 == 'Pea aphid (Acyrthosiphon pisum)'){
+          N <- input$N_load_b
+          Hstar <- input$Hstar_load_b
+          x <- input$probs_load_b
+          split_str <- strsplit(x, ",")
+          probs <- as.numeric(unlist(split_str))
+        }else if(input$Id008 == 'Common mosquito (Culex pipiens)'){
+          N <- input$N_load_c
+          Hstar <- input$Hstar_load_c
+          x <- input$probs_load_c
+          split_str <- strsplit(x, ",")
+          probs <- as.numeric(unlist(split_str))
+        }else if(input$Id008 == 'Deer tick (Ixodes scapularis)'){
+          N <- input$N_load_d
+          Hstar <- input$Hstar_load_d
+          x <- input$probs_load_d
+          split_str <- strsplit(x, ",")
+          probs <- as.numeric(unlist(split_str))
+        }else if(input$Id008 == 'Gypsy moth (Lymantria dispar)'){
+          N <- input$N_load_e
+          Hstar <- input$Hstar_load_e
+          x <- input$probs_load_e
+          split_str <- strsplit(x, ",")
+          probs <- as.numeric(unlist(split_str))
+        }else if(input$Id008 == 'Scalloped hammerhead shark (Sphyrna lewini)'){
+          N <- input$N_load_f
+          Hstar <- input$Hstar_load_f
+          x <- input$probs_load_f
+          split_str <- strsplit(x, ",")
+          probs <- as.numeric(unlist(split_str))
+        }
         
         result <- metaRender(renderPrint,{
           validate(
@@ -49,13 +89,17 @@ server <- function(input, output) {
                                      progress = TRUE, num.iters = NULL, filename = NULL)
           values[["log"]] <- capture.output(data <- HAC.simrep(HACSObj))
         })
+        
+        output$text <- renderPrint({
+          x <- values[["log"]]
+          toBeReturned <- str_replace_all(x, '\\s+' , " ")
+          return(print(noquote(toBeReturned)))
+        })
+        
         output$plot <-renderPlot({
           result()
         })
-        output$text <- renderPrint({
-          #result()
-          return(print(values[["log"]]))
-        })
+        
       }else{ # Real Species
         values <- reactiveValues()
         subsample <- input$subsampleseqs
@@ -77,7 +121,7 @@ server <- function(input, output) {
           )
           # creating a HACSObj object by running HACReal()
           HACSObj <- HACReal(perms = permutations, p = p ,conf.level = 0.95,
-                             subsample = subsample, prop = prop, progress = TRUE,
+                             subsample = subsample, prop = prop, progress = progress,
                              num.iters = NULL, 
                              filename = "output")
           values[["log"]] <- capture.output(data <- HAC.simrep(HACSObj))
@@ -88,8 +132,10 @@ server <- function(input, output) {
           result()
         })
         output$text <- renderPrint({
-          #result()
-          return(print(values[["log"]]))
+          x <- values[["log"]]
+          remove_characters <- str_replace_all(x, '[\r\n]' , "")
+          toBeReturned <- str_replace_all(remove_characters, '\\s+' , " ")
+          return(print(noquote(toBeReturned)))
         })
       }
       
@@ -126,7 +172,7 @@ server <- function(input, output) {
         HACSObj <- HACHypothetical(N = N,Hstar = Hstar,probs = probs,perms = permutations, p = p, 
                                    conf.level = conf.level,
                                    subsample = subsample, prop = prop,
-                                   progress = TRUE, num.iters = NULL, filename = NULL)
+                                   progress = progress, num.iters = NULL, filename = NULL)
         values[["log"]] <- capture.output(data <- HAC.simrep(HACSObj))
         
       })
@@ -134,8 +180,10 @@ server <- function(input, output) {
         result()
       })
       output$text <- renderPrint({
-        #result()
-        return(print(values[["log"]]))
+        x <- values[["log"]]
+        remove_characters <- str_replace_all(x, '[\r\n]' , "")
+        toBeReturned <- str_replace_all(remove_characters, '\\s+' , " ")
+        return(print(noquote(toBeReturned)))
       })
     }
   })

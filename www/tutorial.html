@@ -24,13 +24,17 @@
       background-color: #555;
     }
     
+    .p1 {
+      font-family: "Times New Roman", Times, serif;
+    }
+
     .responsive {
       width: 100%;
       height: auto;
     }
     </style>
   </head>
-  <body>
+  <body style=font-family: "Times New Roman", Times, serif;>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <div class="container" style = "width:100%;
       margin: auto 0;">
@@ -39,15 +43,15 @@
         <div class="panel panel-success">
           <div class="panel-heading">Running the Simulation</div>
           <div class="panel-body">
-            <p>To successfully run the simulation follow the steps listed below:</p>
+            <p class="p1">To successfully run the simulation follow the steps listed below:</p>
             <ul>
               <li>
-                <p>Click on the 'run simulation' button located at the top right corner of the home page to start Haplotype Accumulation Curve Simulator.</p>
+                <p class="p1">Click on the 'run simulation' button located at the top right corner of the home page to start HACSim.</p>
                 <img src="/run_button.png" alt="Start Simulator" class="responsive" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
               </li>
               <li>
-                <p>Enter all the required arguments in the main interface and sub interface.</p>
-                <small>First click on the main interface and fill in the desired number of permutations, proportion of haplotypes to recover, confidence level for calculations and plotting. Next, go to the sub interface and select either real or hypothetical species simulation type.</small>
+                <p class="p1">Enter all the required arguments in the main interface and sub interface.</p>
+                <small class="p1">First click on the main interface and fill in the desired number of permutations, proportion of haplotypes to recover, confidence level for calculations and plotting. Next, go to the sub interface and select either real or hypothetical species simulation type.</small>
                 <div class="row">
                 <div class="column" style="float: left;width: 50%;padding: 5px;">
                   <img src="/main_interface.png" alt="Main interface" class="responsive" /img>
@@ -58,20 +62,20 @@
               </div>
               </li>
               <li>
-                <p>
-                  If user has selected real species simulation type in the sub interface, then follow the instructions in the picture below.
+                <p class="p1">
+                  To simulate real simulation follow the instructions in the picture below.
                 </p>
                 <img src="/real.png" alt="Real species" class="responsive" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
               </li>
               <li>
-                <p>
-                  In hypothetical species simulation type, fill in the required input arguments to complete the steps.
+                <p class="p1">
+                  To simulate hypothetical simulation, fill in the required input arguments to complete the steps.
                 </p>
                 <img src="/hypothetical.png" alt="Start Simulator" class="responsive" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"></img>
               </li>
               <li>
-                <p>User has an option to input proportion of DNA sequences to subsample. To do so, click on the checkbox called 'Subsample DNA Sequences in sub interface and fill in the numeric value in the input field.</p>
-                <p>Once user has completed all the steps, hit run.</p>
+                <p class="p1">User has an option to input proportion of DNA sequences to subsample. To do so, click on the checkbox called 'Subsample DNA Sequences' in sub interface and fill in the numeric value in the input field.</p>
+                <p class="p1">Once user has completed all the steps, hit run.</p>
                 <div class="row">
                 <div class="column" style="float: left;width: 50%;padding: 5px;">
                   <img src="/subsample.png" alt="subsample DNA sequences" class="responsive" /img>
@@ -82,30 +86,9 @@
               </div>
               </li>
             </ul>
-            <p>
-              Depending on the size of input parameters to the simulation, the algorithm in its current form, can be quite slow to reach full convergence. For a species with equal haplotype frequency, saturation of the haplotype accumulation curve is (usually) reached very rapidly (one exception occurs when N = Hstar). On the other hand, for a species with many rare haplotypes, the generated haplotype accumulation curve will take signficantly longer to reach an asymptote, since rare haplotypes will not be sampled as frequently as dominant ones.
+            <p class="p1">
+              Depending on the size of input parameters to the simulation, the algorithm in its current form, can be quite slow to reach full convergence. For a species with equal haplotype frequency, saturation of the haplotype accumulation curve is (usually) reached very rapidly (one exception occurs when N = Hstar). On the other hand, for a species with many rare haplotypes, the generated haplotype accumulation curve will take signficantly longer to reach an asymptote since rare haplotypes will not be sampled as frequently as dominant ones.
             </p>
-            <p>Below is the list of downloadable FASTA files. Click on the file name to download it. User can use downloaded file in real species simulation.</p>
-            <ul>
-              <li>
-                <a href="/Coregonus clupeaformis_aligned.fas" download>Coregonus clupeaformis_aligned</a>
-              </li>
-              <li>
-                <a href="/Acyrthosiphon pisum_aligned.fas" download>Acyrthosiphon pisum_aligned</a>
-              </li>
-              <li>
-                <a href="/Culex pipens_aligned.fas" download>Culex pipens_aligned</a>
-              </li>
-              <li>
-                <a href="/Ixodes scapularis_aligned.fas" download>Ixodes scapularis_aligned</a>
-              </li>
-              <li>
-                <a href="/Lymantria dispar_aligned.fas" download>Lymantria dispar_aligned</a>
-              </li>
-              <li>
-                <a href="/Sphyrna lewini_aligned.fas" download>Sphyrna lewini_aligned</a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

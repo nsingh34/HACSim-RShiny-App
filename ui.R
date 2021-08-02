@@ -49,19 +49,19 @@ tags$body(
         indicators = FALSE,
         carouselItem(
           active = TRUE,
-          tags$img(src = "a.gif",style = "min-width: 100vw; min-height: 100vh;")
+          tags$img(src = "c.jpg",style = "min-width: 100vw; min-height: 100vh;")
         ),
         carouselItem(
-          tags$img(src = "b.gif",style = "min-width: 100vw; min-height: 100vh;")
+          tags$img(src = "b.jpg",style = "min-width: 100vw; min-height: 100vh;")
         ),
         carouselItem(
-          tags$img(src = "c.gif",style = "min-width: 100vw; min-height: 100vh;")
+          tags$img(src = "a.jpg",style = "min-width: 100vw; min-height: 100vh;")
         ),
         tags$blockquote(h1("HACSim helps individuals to find required specimen sample sizes necessary for genetic diversity assessment
       !",style="font-size:2.5vw; color:white;position:fixed;left:5%;top:30%;
                   right:20%"))
       ),
-      tags$blockquote(h3("Abstract"),"Assessing levels of standing genetic variation within species requires a robust sampling
+      div(h3("Abstract",style="color:white;"),h1("Assessing levels of standing genetic variation within species requires a robust sampling
 for the purpose of accurate specimen identification using molecular techniques such
 as DNA barcoding; however, statistical estimators for what constitutes a robust sample
 are currently lacking. Moreover, such estimates are needed because most species are
@@ -81,7 +81,8 @@ and (2) to simulate haplotype sampling in real species mined from public referen
 sequence databases like the Barcode of Life Data Systems (BOLD) or GenBank for any
 genomic marker of interest. While our algorithm is globally convergent, runtime is
 heavily dependent on initial sample sizes and skewness of the corresponding haplotype
-frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2%;bottom:2%;")
+frequency distribution.",style="font-family: 'Times New Roman', Times, serif;font-size:1vw; color:white;"),
+          style = "position:fixed;left:2%;bottom:5%;")
       ),
     tabPanel("Tutorial",
              includeHTML("www/tutorial.html"),
@@ -133,17 +134,19 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
                                tags$blockquote(h3("Navdeep Singh"),
                                                p("Email: navuonweb@gmail.com"))
                              ),
-                             tabPanel("Citation",
-                                      tags$blockquote(h3(tags$a("Citation",href="Phillips et al. (2020).pdf")),
-                                                      p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                             tabPanel("Citations",
+                                      tags$blockquote(h3(tags$a("Citations",href="Phillips et al. (2020).pdf")),
+                                                      br(),
+                                                      tags$ul(
+                                                        tags$li(p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
-                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")
-                                                      ,style="font-size:120%; color:black;"),
-                                      tags$blockquote(h3(tags$a("Citation",href="Phillips et al. (2020).pdf")),
-                                                      p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
-                    R package to estimate intraspecific sample sizes for genetic diversity assessment 
-                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")
-                                                      ,style="font-size:120%; color:black;"))),style="position:fixed;top:15%")
+                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")),
+                                                        tags$li(p(strong("Phillips, J.D.",),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
+                                                        haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3"),": 66-73. DOI: 10.1515/dna-2015-0008.")),
+                                                        tags$li(p(strong("Phillips, J.D.",),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9"),"(5): 2996-3010. DOI: 10.1002/ece3.4757.")),
+                                                        tags$li(p(strong("Chang, W.",),",", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen J., McPherson, J., Dipert, A., and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
+                                                        https://CRAN.R-project.org/package=shiny"))
+                                                      ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%")
              
     ),
     tabPanel(
@@ -161,7 +164,7 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
       titlePanel(h1("Genetic Diversity Assessment")),
       div(
         style = "position: fixed; left: 0; top: 0; z-index: -1;",
-        img(src = "run.gif", style = "min-width: 100vw; min-height: 100vh;")
+        img(src = "run_sim.jpg", style = "min-width: 100vw; min-height: 100vh;")
       ),
       sidebarLayout(
         tabsetPanel(
@@ -189,16 +192,16 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
                                     min = 0.01,
                                     max = 0.99,
                                     step = 0.01),
-                       
-                       actionBttn(
-                         inputId = "run",
-                         label ="Run",
-                         color = "success",
-                         style = "jelly",
-                         size ="sm",
-                         block = FALSE
+                       switchInput(
+                         label = "Progress",
+                         inputId = "progress_bar",
+                         onLabel = "True",
+                         offLabel = "False",
+                         value = TRUE,
+                         onStatus = "success", 
+                         offStatus = "danger",
+                         labelWidth = "80px"
                        )
-                       ,helpText("Disclaimer: Simulation may take time to run depending on the size of dataset and parameters.")
                        
                      ) # end side bar Panel
                    
@@ -216,14 +219,11 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
                        offStatus = "danger"
                      ),
                      conditionalPanel(condition = "input.switch == 1",
-                                      h3("How to choose a FASTA file?"),
-                                      helpText("Fill in all the required parameters for your simulation and hit run, a 
-                                               popup window will appear and than choose .fas file."),
-                                      h3("Preloaded example for real species (Lake whitefish (Coregonus clupeaformis))"),
+                                      h3("Preloaded examples for real species"),
                                       switchInput(
                                         inputId = "Id015",
-                                        onLabel = "Load",
-                                        offLabel = "Off",
+                                        onLabel = "Show",
+                                        offLabel = "Hide",
                                         value = FALSE,
                                         onStatus = "success", 
                                         offStatus = "danger"
@@ -239,31 +239,138 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
 	                                       at the ends of sequences, further alignment trimming is an option.")
                                       ),
                                       conditionalPanel(condition = "input.Id015 == 1",
-                                                       tags$a(
-                                                         tags$i(" Coregonus clupeaformis_aligned.fas",class="fas fa-file-download"),href = "Coregonus clupeaformis_aligned.fas",download = "Coregonus clupeaformis_aligned.fas"),
-                                                       br(),
-                                                       tags$progress("100%",value = "100",max="100"),
-                                                       tags$text("Upload complete ✓"),
-                                                       numericInput(inputId = "N_load",
-                                                                    label = "Number of observed specimens (N)",
-                                                                    value = 235,
-                                                                    min = 2),
-                                                       
-                                                       numericInput(inputId = "Hstar_load",
-                                                                    label = "Number of observed haplotypes (Hstar)",
-                                                                    value = 15,
-                                                                    min = 1),
-                                                       
-                                                       textInput(inputId = "probs_load",
-                                                                 label = "Haplotype frequency distribution (probs)",
-                                                                 value = "0.914893617,0.012765957,0.012765957,0.008510638,0.008510638,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319"),
-                                                       helpText("Preloaded examples for real species (Lake whitefish (Coregonus clupeaformis)) has been successfully loaded
-                                                                .Go back to main interface and hit run.")
-                                      ),
+                                                       pickerInput(
+                                                         inputId = "Id008",
+                                                         width = '50%',
+                                                         choices = c("Pea aphid (Acyrthosiphon pisum)","Lake whitefish (Coregonus clupeaformis)",  
+                                                                     "Common mosquito (Culex pipiens)", "Deer tick (Ixodes scapularis)","Gypsy moth (Lymantria dispar)","Scalloped hammerhead shark (Sphyrna lewini)"),
+                                                         multiple = FALSE,
+                                                         selected = "Pea aphid (Acyrthosiphon pisum)", 
+                                                       ),
+                                                       conditionalPanel(condition = "input.Id008 == 'Lake whitefish (Coregonus clupeaformis)'",
+                                                                        tags$a(
+                                                                          tags$i(" Coregonus clupeaformis_aligned.fas",class="fas fa-file-download"),href = "Coregonus clupeaformis_aligned.fas",download = "Coregonus clupeaformis_aligned.fas"),
+                                                                        br(),
+                                                                        tags$progress("100%",value = "100",max="100"),
+                                                                        tags$text("Upload complete ✓"),
+                                                                        numericInput(inputId = "N_load_a",
+                                                                                     label = "Number of observed specimens (N)",
+                                                                                     value = 235,
+                                                                                     min = 2),
+                                                                        
+                                                                        numericInput(inputId = "Hstar_load_a",
+                                                                                     label = "Number of observed haplotypes (Hstar)",
+                                                                                     value = 15,
+                                                                                     min = 1),
+                                                                        
+                                                                        textInput(inputId = "probs_load_a",
+                                                                                  label = "Haplotype frequency distribution (probs)",
+                                                                                  value = "0.914893617,0.012765957,0.012765957,0.008510638,0.008510638,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319,0.004255319")
+                                                       ),
+                                                       conditionalPanel(condition = "input.Id008 == 'Pea aphid (Acyrthosiphon pisum)'",
+                                                                        tags$a(
+                                                                          tags$i(" Acyrthosiphon pisum_aligned.fas",class="fas fa-file-download"),href = "Acyrthosiphon pisum_aligned.fas",download = "Acyrthosiphon pisum_aligned.fas"),
+                                                                        br(),
+                                                                        tags$progress("100%",value = "100",max="100"),
+                                                                        tags$text("Upload complete ✓"),
+                                                                        numericInput(inputId = "N_load_b",
+                                                                                     label = "Number of observed specimens (N)",
+                                                                                     value = 356,
+                                                                                     min = 2),
+                                                                        
+                                                                        numericInput(inputId = "Hstar_load_b",
+                                                                                     label = "Number of observed haplotypes (Hstar)",
+                                                                                     value = 12,
+                                                                                     min = 1),
+                                                                        
+                                                                        textInput(inputId = "probs_load_b",
+                                                                                  label = "Haplotype frequency distribution (probs)",
+                                                                                  value = "0.966292135,0.005617978,0.002808989,0.002808989,0.002808989,0.002808989, 0.002808989,0.002808989,0.002808989,0.002808989,0.002808989,0.002808989")
+                                                       ),
+                                                       conditionalPanel(condition = "input.Id008 == 'Common mosquito (Culex pipiens)'",
+                                                                        tags$a(
+                                                                          tags$i(" Culex pipens_aligned.fas",class="fas fa-file-download"),href = "Culex pipens_aligned.fas",download = "Culex pipens_aligned.fas"),
+                                                                        br(),
+                                                                        tags$progress("100%",value = "100",max="100"),
+                                                                        tags$text("Upload complete ✓"),
+                                                                        numericInput(inputId = "N_load_c",
+                                                                                     label = "Number of observed specimens (N)",
+                                                                                     value = 217,
+                                                                                     min = 2),
+                                                                        
+                                                                        numericInput(inputId = "Hstar_load_c",
+                                                                                     label = "Number of observed haplotypes (Hstar)",
+                                                                                     value = 25,
+                                                                                     min = 1),
+                                                                        
+                                                                        textInput(inputId = "probs_load_c",
+                                                                                  label = "Haplotype frequency distribution (probs)",
+                                                                                  value = "0.843317972,0.032258065,0.009216590,0.009216590,0.009216590,0.009216590,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295,0.004608295")
+                                                       ),
+                                                       conditionalPanel(condition = "input.Id008 == 'Deer tick (Ixodes scapularis)'",
+                                                                        tags$a(
+                                                                          tags$i(" Ixodes scapularis_aligned.fas",class="fas fa-file-download"),href = "Ixodes scapularis_aligned.fas",download = "Ixodes scapularis_aligned.fas"),
+                                                                        br(),
+                                                                        tags$progress("100%",value = "100",max="100"),
+                                                                        tags$text("Upload complete ✓"),
+                                                                        numericInput(inputId = "N_load_d",
+                                                                                     label = "Number of observed specimens (N)",
+                                                                                     value = 249,
+                                                                                     min = 2),
+                                                                        
+                                                                        numericInput(inputId = "Hstar_load_d",
+                                                                                     label = "Number of observed haplotypes (Hstar)",
+                                                                                     value = 83,
+                                                                                     min = 1),
+                                                                        
+                                                                        textInput(inputId = "probs_load_d",
+                                                                                  label = "Haplotype frequency distribution (probs)",
+                                                                                  value = "0.131805158,0.083094556,0.071633238,0.063037249,0.057306590,0.037249284,0.034383954,0.034383954,0.025787966,0.022922636,0.020057307,0.020057307,0.020057307,0.017191977,0.017191977,0.014326648,0.014326648,0.014326648,0.011461318,0.011461318,0.011461318,0.008595989,0.008595989,0.008595989,0.008595989,0.008595989,0.008595989,0.008595989,0.008595989,0.008595989,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.005730659,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330,0.002865330")
+                                                       ),
+                                                       conditionalPanel(condition = "input.Id008 == 'Gypsy moth (Lymantria dispar)'",
+                                                                        tags$a(
+                                                                          tags$i(" Lymantria dispar_aligned.fas",class="fas fa-file-download"),href = "Lymantria dispar_aligned.fas",download = "Lymantria dispar_aligned.fas"),
+                                                                        br(),
+                                                                        tags$progress("100%",value = "100",max="100"),
+                                                                        tags$text("Upload complete ✓"),
+                                                                        numericInput(inputId = "N_load_e",
+                                                                                     label = "Number of observed specimens (N)",
+                                                                                     value = 365,
+                                                                                     min = 2),
+                                                                        
+                                                                        numericInput(inputId = "Hstar_load_e",
+                                                                                     label = "Number of observed haplotypes (Hstar)",
+                                                                                     value = 58,
+                                                                                     min = 1),
+                                                                        
+                                                                        textInput(inputId = "probs_load_e",
+                                                                                  label = "Haplotype frequency distribution (probs)",
+                                                                                  value = "0.232876712,0.208219178,0.120547945,0.106849315,0.035616438,0.024657534,0.024657534,0.019178082,0.013698630,0.013698630,0.013698630,0.010958904,0.010958904,0.010958904,0.008219178,0.008219178,0.008219178,0.005479452,0.005479452,0.005479452,0.005479452,0.005479452,0.005479452,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726,0.002739726")
+                                                       ),
+                                                       conditionalPanel(condition = "input.Id008 == 'Scalloped hammerhead shark (Sphyrna lewini)'",
+                                                                        tags$a(
+                                                                          tags$i(" Sphyrna lewini_aligned.fas",class="fas fa-file-download"),href = "Sphyrna lewini_aligned.fas",download = "Sphyrna lewini_aligned.fas"),
+                                                                        br(),
+                                                                        tags$progress("100%",value = "100",max="100"),
+                                                                        tags$text("Upload complete ✓"),
+                                                                        numericInput(inputId = "N_load_f",
+                                                                                     label = "Number of observed specimens (N)",
+                                                                                     value = 171,
+                                                                                     min = 2),
+                                                                        
+                                                                        numericInput(inputId = "Hstar_load_f",
+                                                                                     label = "Number of observed haplotypes (Hstar)",
+                                                                                     value = 12,
+                                                                                     min = 1),
+                                                                        
+                                                                        textInput(inputId = "probs_load_f",
+                                                                                  label = "Haplotype frequency distribution (probs)",
+                                                                                  value = "0.409356725,0.304093567,0.163742690,0.035087719,0.029239766,0.023391813,0.005847953,0.005847953,0.005847953,0.005847953,0.005847953,0.005847953")
+                                                       )),
                                       conditionalPanel(condition = "input.subsampleseqs == 1",
                                                        numericInput(inputId = "prop",
                                                                     label = "Proportion of DNA sequences to subsample (prop.seqs)",
-                                                                    value = NULL,
+                                                                    value = 0.25,
                                                                     min = 0,
                                                                     max = 1,
                                                                     step = 0.01),
@@ -300,7 +407,16 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
                                                                     step = 0.01),
                                                        
                                       )
-                     ))
+                     ),
+                     actionBttn(
+                       inputId = "run",
+                       label ="Run",
+                       color = "success",
+                       style = "jelly",
+                       size ="sm",
+                       block = FALSE
+                     )
+                     ,helpText("Disclaimer: Simulation may take time to run depending on the size of dataset and parameters."))
                    ),
           sidebarPanel(
             width = 12,
@@ -310,7 +426,11 @@ frequency distribution.",style="font-size:1vw; color:white;position:fixed;left:2
               verbatimTextOutput("text"),
               withSpinner(
                 image = "giphy.gif", image.width = 200, image.height = 200,
-                plotOutput("plot")
+                plotOutput(outputId = "plot",
+                           click = "plot_click",
+                           dblclick = "plot_dblclick",
+                           hover = "plot_hover",
+                           brush = "plot_brush")
               )
             )
           )

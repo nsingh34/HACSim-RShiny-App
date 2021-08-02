@@ -3,14 +3,24 @@
 # the 'Run App' button above.
 #
 
-# importing shiny library
+# # install.packages("shiny")
 library(shiny)
-
-# importing HACSim library
+# install.packages("HACSim")
 library(HACSim)
-
-# importing ggplot2
+# install.packages("ggplot2")
 library(ggplot2)
+# install.packages("shinymeta")
+library(shinymeta)
+# install.packages("shinydashboard")
+library(shinydashboard)
+# install.packages("shinydashboardPlus")
+library(shinydashboardPlus)
+# install.packages("shinyWidgets")
+library(shinyWidgets)
+# install.packages("shinycssloaders")
+library(shinycssloaders)
+# install.packages("stringr")
+library(stringr)
 
 # load ui elements
 source("ui.R")
