@@ -96,8 +96,13 @@ server <- function(input, output) {
           return(print(noquote(toBeReturned)))
         })
         
-        output$plot <-renderPlot({
+        output$pdfview <- renderUI({
+          path <- "www/Rplots.pdf"
+          pdf(file=path,width=12, height=5,onefile=T,title = "HACSim Graphics Output",paper = "a4r")  
           result()
+          dev.off()
+          my_test <- tags$iframe(style="height:800px; width:100%; background-color: white;", src="Rplots.pdf")
+          return({my_test})
         })
         
       }else{ # Real Species
@@ -125,17 +130,21 @@ server <- function(input, output) {
                              num.iters = NULL, 
                              filename = "output")
           values[["log"]] <- capture.output(data <- HAC.simrep(HACSObj))
-          #HAC.simrep(HACSObj)
           
-        })
-        output$plot <-renderPlot({
-          result()
         })
         output$text <- renderPrint({
           x <- values[["log"]]
-          remove_characters <- str_replace_all(x, '[\r\n]' , "")
-          toBeReturned <- str_replace_all(remove_characters, '\\s+' , " ")
+          toBeReturned <- str_replace_all(x, '\\s+' , " ")
           return(print(noquote(toBeReturned)))
+        })
+        
+        output$pdfview <- renderUI({
+          path <- "www/Rplots.pdf"
+          pdf(file=path,width=12, height=5,onefile=T,title = "HACSim Graphics Output",paper = "a4r")  
+          result()
+          dev.off()
+          my_test <- tags$iframe(style="height:800px; width:100%; background-color: white;", src="Rplots.pdf")
+          return({my_test})
         })
       }
       
@@ -176,14 +185,19 @@ server <- function(input, output) {
         values[["log"]] <- capture.output(data <- HAC.simrep(HACSObj))
         
       })
-      output$plot <-renderPlot({
-        result()
-      })
       output$text <- renderPrint({
         x <- values[["log"]]
-        remove_characters <- str_replace_all(x, '[\r\n]' , "")
-        toBeReturned <- str_replace_all(remove_characters, '\\s+' , " ")
+        toBeReturned <- str_replace_all(x, '\\s+' , " ")
         return(print(noquote(toBeReturned)))
+      })
+      
+      output$pdfview <- renderUI({
+        path <- "www/Rplots.pdf"
+        pdf(file=path,width=12, height=5,onefile=T,title = "HACSim Graphics Output",paper = "a4r")  
+        result()
+        dev.off()
+        my_test <- tags$iframe(style="height:800px; width:100%; background-color: white;", src="Rplots.pdf")
+        return({my_test})
       })
     }
   })

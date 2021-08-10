@@ -426,11 +426,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
               verbatimTextOutput("text"),
               withSpinner(
                 image = "giphy.gif", image.width = 200, image.height = 200,
-                plotOutput(outputId = "plot",
-                           click = "plot_click",
-                           dblclick = "plot_dblclick",
-                           hover = "plot_hover",
-                           brush = "plot_brush")
+                uiOutput('pdfview')
               )
             )
           )
