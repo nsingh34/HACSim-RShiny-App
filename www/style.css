@@ -72,4 +72,6 @@ background: linear-gradient(0deg, rgba(14,202,204,0) 23%, rgba(0,0,0,0.795955882
   z-index: -1;
 }
 
+#mycarousel li { visibility: hidden; }
+
 
