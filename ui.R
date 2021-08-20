@@ -48,7 +48,7 @@ tags$body(
         style = "position: fixed; left: 0; top: 0; z-index: -1;",
         img(src = "c.jpg", style = "min-width: 100vw; min-height: 100vh;")
       ),
-        tags$blockquote(h1("HACSim helps individuals to find required specimen sample sizes necessary for genetic diversity assessment
+        tags$blockquote(h1("HACSim help researchers to find required specimen sample sizes necessary for genetic diversity assessment
       !",style="font-size:2.5vw; color:white;position:fixed;left:5%;top:30%;
                   right:20%")
       ),
@@ -89,7 +89,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                  img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
                ),
                style="position:fixed;top:35%;",
-               tabsetPanel(tabPanel("HACSim?",
+               tabsetPanel(tabPanel("About HACSim",
                                       tags$blockquote(h3("What is HACSim and how does it work?"),
                                                       p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
                         for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
@@ -114,29 +114,29 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                   ")),
                              tabPanel("More info",tags$blockquote(h3("More Information"), 
                                                                   p("Are you interested in doing even more with HACSim? Consider downloading the R package! See the HACSim", 
-                                                                    tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN"),
+                                                                    tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN",target = "_blank"),
                                                                     "page for more details. You can also check out the HACSim R package repository on", 
-                                                                    tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.")),style="font-size:120%; color:black;
+                                                                    tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.", target = "_blank")),style="font-size:120%; color:black;
                   ")),
                              tabPanel(
-                               "Author",
+                               "Authors",
                                tags$blockquote(h3("Jarrett D. Phillips"),
                                                p("Email: phillipsjarrett1@gmail.com")),
                                tags$blockquote(h3("Navdeep Singh"),
                                                p("Email: navuonweb@gmail.com"))
                              ),
                              tabPanel("Citations",
-                                      tags$blockquote(h3(tags$a("Citations",href="Phillips et al. (2020).pdf")),
+                                      tags$blockquote(h3("Citations"),
                                                       br(),
                                                       tags$ul(
                                                         tags$li(p(strong("Chang, W.",),",", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen J., McPherson, J., Dipert, A., and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
                                                         https://CRAN.R-project.org/package=shiny")),
-                                                        tags$li(p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                                                        tags$li(tags$a(p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
-                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")),
-                                                        tags$li(p(strong("Phillips, J.D.",),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9"),"(5): 2996-3010. DOI: 10.1002/ece3.4757.")),
-                                                        tags$li(p(strong("Phillips, J.D.",),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
-                                                        haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3"),": 66-73. DOI: 10.1515/dna-2015-0008.")),
+                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37."),href="Phillips et al. (2020).pdf", target = "_blank")),
+                                                        tags$li(tags$a(p(strong("Phillips, J.D.",),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9"),"(5): 2996-3010. DOI: 10.1002/ece3.4757."),href="Phillips et al. (2019).pdf", target = "_blank")),
+                                                        tags$li(tags$a(p(strong("Phillips, J.D.",),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
+                                                        haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3"),": 66-73. DOI: 10.1515/dna-2015-0008."),href="Phillips et al. (2015).pdf", target = "_blank")),
                                                         tags$li(p(strong("Ratnasingham"),"and Hebert (2007) BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7"),"(3):355-364. URL: https://v4.boldsystems.org."))
                                                       ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%")
              
@@ -192,7 +192,8 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                          value = TRUE,
                          onStatus = "success", 
                          offStatus = "danger",
-                         labelWidth = "80px"
+                         labelWidth = "80px",
+                         disabled = TRUE
                        )
                        
                      ) # end side bar Panel

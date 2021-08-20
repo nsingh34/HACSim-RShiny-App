@@ -1,11 +1,9 @@
-/* Import font for use */
-@import url('https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap');
 
 :root {
   /* Fonts */
-  --text-font-family: "Corben";
+  --text-font-family: "Times New Roman";
   --text-font-base: serif;
-  --base-font-size: 18px;
+  --base-font-size: 20px;
   --base-weight: 400;
   --heavy-weight: 700;
 
