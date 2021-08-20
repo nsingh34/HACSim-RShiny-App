@@ -48,8 +48,8 @@ tags$body(
         style = "position: fixed; left: 0; top: 0; z-index: -1;",
         img(src = "c.jpg", style = "min-width: 100vw; min-height: 100vh;")
       ),
-        tags$blockquote(h1("HACSim help researchers to find required specimen sample sizes necessary for genetic diversity assessment
-      !",style="font-size:2.5vw; color:white;position:fixed;left:5%;top:30%;
+        tags$blockquote(h1("HACSim helps researchers estimate required specimen sample sizes necessary for species genetic diversity assessment
+      ",style="font-size:2.5vw; color:white;position:fixed;left:5%;top:30%;
                   right:20%")
       ),
       div(h3("Abstract",style="color:white;"),h1("Assessing levels of standing genetic variation within species requires a robust sampling
