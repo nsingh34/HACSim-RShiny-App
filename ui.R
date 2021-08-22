@@ -129,7 +129,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                       tags$blockquote(h3("Citations"),
                                                       br(),
                                                       tags$ul(
-                                                        tags$li(p(strong("Chang, W.",),",", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen J., McPherson, J., Dipert, A., and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
+                                                        tags$li(p("Chang, W.", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen J., McPherson, J., Dipert, A., and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
                                                         https://CRAN.R-project.org/package=shiny")),
                                                         tags$li(tags$a(p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
@@ -137,7 +137,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                                         tags$li(tags$a(p(strong("Phillips, J.D.",),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9"),"(5): 2996-3010. DOI: 10.1002/ece3.4757."),href="Phillips et al. (2019).pdf", target = "_blank")),
                                                         tags$li(tags$a(p(strong("Phillips, J.D.",),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
                                                         haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3"),": 66-73. DOI: 10.1515/dna-2015-0008."),href="Phillips et al. (2015).pdf", target = "_blank")),
-                                                        tags$li(p(strong("Ratnasingham"),"and Hebert (2007) BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7"),"(3):355-364. URL: https://v4.boldsystems.org."))
+                                                        tags$li(p("Ratnasingham and Hebert (2007) BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7"),"(3):355-364. URL: https://v4.boldsystems.org."))
                                                       ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%")
              
     ),
