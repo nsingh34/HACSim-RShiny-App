@@ -128,7 +128,7 @@ server <- function(input, output) {
           HACSObj <- HACReal(perms = permutations, p = p ,conf.level = 0.95,
                              subsample = subsample, prop = prop, progress = progress,
                              num.iters = NULL, 
-                             filename = "output")
+                             filename = NULL)
           values[["log"]] <- capture.output(data <- HAC.simrep(HACSObj))
           
         })
