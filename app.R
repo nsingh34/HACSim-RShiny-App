@@ -1,5 +1,5 @@
 #
-# This is a HACSim R Shiny Web Application. You can run the application by clicking
+# This is the HACSim R Shiny Web Application. You can run the application by clicking
 # the 'Run App' button above.
 #
 

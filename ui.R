@@ -20,10 +20,10 @@ library(HACSim)
 library(ggplot2)
 
 # defining the logo for the home page
-logo <- a(href = "", img(src = "HACSim.png", alt = "HACSim: Haplotype Accumulation Curve Simulator", height = "100px",width="300px"))
+logo <- a(href = "", img(src = "HACSim.png", salt = "HACSim: Haplotype Accumulation Curve Simulator", height = "100px",width="300px"))
 
 tags$body(
-  tags$style(type="text/css", "body {padding-top: 80px;}"),
+  tags$style(type="text/css", "body {margin:auto;padding-top: 66px;}"),
   tagList(
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
@@ -89,7 +89,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                  img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
                ),
                style="position:fixed;top:35%;",
-               tabsetPanel(tabPanel("About HACSim",
+               tabsetPanel(type = "pills",tabPanel("About HACSim",
                                       tags$blockquote(h3("What is HACSim and how does it work?"),
                                                       p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
                         for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
@@ -426,7 +426,6 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
         ), # end condition panel
         
         mainPanel(
-          textOutput("selected_var")
         )
       )
     )
