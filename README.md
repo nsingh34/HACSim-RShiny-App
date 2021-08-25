@@ -11,3 +11,5 @@ Users can access the app in three ways:
 - Through directly launching the app from the HACSim R package itself.
 
 **Note**: Depending on the magnitude of inputted parameters, users may wish to employ the HACSim R package directly through R, especially for long simulation runtimes
+
+A short manuscript outlining the tool is in preparation. For now, users can follow the Tutorial within the app. 
