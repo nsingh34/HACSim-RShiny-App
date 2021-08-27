@@ -212,7 +212,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                        offStatus = "danger"
                      ),
                      conditionalPanel(condition = "input.switch == 1",
-                                      h3("Preloaded examples for real species"),
+                                      h3("Preloaded examples"),
                                       switchInput(
                                         inputId = "Id015",
                                         onLabel = "Show",
@@ -411,6 +411,14 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                      )
                      ,helpText("Disclaimer: Simulation may take time to run depending on the size of dataset and parameters."))
                    ),
+                    actionBttn(
+                      inputId = "reset",
+                      label = "Reset",
+                      color = "success",
+                      style = "jelly",
+                      size ="sm",
+                      block = FALSE
+                    ),
           sidebarPanel(
             width = 12,
             wellPanel(
