@@ -388,12 +388,12 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                       ,
                                       
                                       checkboxInput(inputId = "subsampleseqs_2", 
-                                                    label = "Subsample DNA sequences",
+                                                    label = "Subsample haplotype labels",
                                                     value = FALSE),
                                       
                                       conditionalPanel(condition = "input.subsampleseqs_2 == 1",
                                                        numericInput(inputId = "prop_2",
-                                                                    label = "Proportion of DNA sequences to subsample (prop.seqs)",
+                                                                    label = "Proportion of haplotype labels to subsample (prop.haps)",
                                                                     value = "0.25",
                                                                     min = 0,
                                                                     max = 1,
