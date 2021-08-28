@@ -7,6 +7,7 @@
 library(shiny)
 library(shinydashboard)
 library(shinydashboardPlus)
+library(shinyjs)
 # importing shiny widgets
 library(shinyWidgets)
 
@@ -30,6 +31,7 @@ tags$body(
     )
   ),
   # navigation bar to navigate through page
+  useShinyjs(),
   navbarPage(
     position = "fixed-top",
     title = logo,
@@ -137,7 +139,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                                         tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9"),"(5): 2996-3010. DOI: 10.1002/ece3.4757."),href="Phillips et al. (2019).pdf", target = "_blank")),
                                                         tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
                                                         haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3"),": 66-73. DOI: 10.1515/dna-2015-0008."),href="Phillips et al. (2015).pdf", target = "_blank")),
-                                                        tags$li(p("Ratnasingham and Hebert (2007) BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7"),"(3):355-364. URL: https://v4.boldsystems.org."))
+                                                        tags$li(p("Ratnasingham and Hebert (2007). BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7"),"(3):355-364. URL: https://v4.boldsystems.org."))
                                                       ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%")
              
     ),
@@ -194,7 +196,15 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                          offStatus = "danger",
                          labelWidth = "80px",
                          disabled = TRUE
-                       )
+                       ),
+                       actionBttn(
+                         inputId = "reset",
+                         label = "Reset",
+                         color = "success",
+                         style = "jelly",
+                         size ="sm",
+                         block = FALSE
+                       ),
                        
                      ) # end side bar Panel
                    
@@ -411,14 +421,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                      )
                      ,helpText("Disclaimer: Simulation may take time to run depending on the size of dataset and parameters."))
                    ),
-                    actionBttn(
-                      inputId = "reset",
-                      label = "Reset",
-                      color = "success",
-                      style = "jelly",
-                      size ="sm",
-                      block = FALSE
-                    ),
+                    
           sidebarPanel(
             width = 12,
             wellPanel(

@@ -19,6 +19,8 @@ library(shinydashboardPlus)
 library(shinyWidgets)
 # install.packages("shinycssloaders")
 library(shinycssloaders)
+# install.packages("shinyjs")
+library(shinyjs)
 # install.packages("stringr")
 library(stringr)
 

@@ -11,6 +11,7 @@ library(HACSim)
 library(ggplot2)
 library(stringr)
 library(shinymeta)
+library(shinyjs)
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
@@ -200,5 +201,14 @@ server <- function(input, output) {
         return({my_test})
       })
     }
+  })
+  observeEvent(input$reset, {
+    reset("perms")
+  })
+  observeEvent(input$reset, {
+    reset("p")
+  })
+  observeEvent(input$reset, {
+    reset("conf.level")
   })
 }
