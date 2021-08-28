@@ -197,6 +197,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                          labelWidth = "80px",
                          disabled = TRUE
                        ),
+                       br(),
                        actionBttn(
                          inputId = "reset",
                          label = "Reset",
@@ -235,7 +236,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                       checkboxInput(inputId = "subsampleseqs", 
                                                     label = "Subsample DNA sequences",
                                                     value = FALSE),
-                                      helpText("Note: Inputted DNA sequences should not contain missing and/or ambiguous 
+                                      helpText(strong("Note", .noWS = c("after")),": Inputted DNA sequences should not contain missing and/or ambiguous 
 	                                       nucleotides, which may lead to overestimation of the number of 
 	                                       observed unique haplotypes. Consider excluding sequences or alignment 
 	                                       sites containing these data. If missing and/or ambiguous bases occur 
@@ -411,6 +412,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                                        
                                       )
                      ),
+                     br(),
                      actionBttn(
                        inputId = "run",
                        label ="Run",
@@ -419,9 +421,9 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                        size ="sm",
                        block = FALSE
                      )
-                     ,helpText("Disclaimer: Simulation may take time to run depending on the size of dataset and parameters."))
+                     ,helpText(strong("Disclaimer", .noWS = c("after")),": Simulation may take time to run depending on the size of the inputted dataset and parameters."))
                    ),
-                    
+          
           sidebarPanel(
             width = 12,
             wellPanel(

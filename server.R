@@ -229,4 +229,7 @@ server <- function(input, output) {
   observeEvent(input$reset, {
     reset("subsampleseqs_2")
   })
+  observeEvent(input$reset, {
+    reset("prop_2")
+  })
 }
