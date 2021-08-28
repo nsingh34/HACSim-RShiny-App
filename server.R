@@ -211,4 +211,22 @@ server <- function(input, output) {
   observeEvent(input$reset, {
     reset("conf.level")
   })
+  observeEvent(input$reset, {
+    reset("switch")
+  })
+  observeEvent(input$reset, {
+    reset("Id015")
+  })
+  observeEvent(input$reset, {
+    reset("N")
+  })
+  observeEvent(input$reset, {
+    reset("Hstar")
+  })
+  observeEvent(input$reset, {
+    reset("probs")
+  })
+  observeEvent(input$reset, {
+    reset("subsampleseqs_2")
+  })
 }
