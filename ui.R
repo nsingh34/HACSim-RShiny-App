@@ -155,7 +155,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
           block = TRUE
         )
       ),
-      titlePanel(h1("Genetic Diversity Assessment")),
+      titlePanel(h1("",style = "padding-top:10px;")),
       div(
         style = "position: fixed; left: 0; top: 0; z-index: -1;",
         img(src = "run_sim.jpg", style = "min-width: 100vw; min-height: 100vh;")
