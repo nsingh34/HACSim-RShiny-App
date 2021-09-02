@@ -130,6 +130,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                              tabPanel("Citations",
                                       tags$blockquote(h3("Citations"),
                                                       br(),
+                                                      p("If you intend to use the HACSim R Shiny web app in your research, please cite the HACSim publication below. A publication for the app is currently in preparation."),
                                                       tags$ul(
                                                         tags$li(p("Chang, W.,", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A. and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
                                                         https://CRAN.R-project.org/package=shiny")),
@@ -140,8 +141,9 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                                         tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
                                                         haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3", .noWS = c("after")),": 66-73. DOI: 10.1515/dna-2015-0008."),href="Phillips et al. (2015).pdf", target = "_blank")),
                                                         tags$li(p("Ratnasingham, S. and Hebert, P.D.N. (2007). BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7", .noWS = c("after")),"(3): 355-364. URL: https://v4.boldsystems.org."))
-                                                      ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%")
-             
+                                                      ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%"),
+                                            
+                                                      
     ),
     tabPanel(
       style = "margin-left:0px;",
