@@ -85,69 +85,70 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
              )
              ),
     tabPanel("About",
+             style="margin-top:40px;float:initial",
              div(
-               div(
-                 style = "position: fixed; left: 0; top: 0; z-index: -1;",
-                 img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
-               ),
-               style="position:fixed;top:35%;",
-               tabsetPanel(type = "pills",tabPanel("About HACSim",
-                                      tags$blockquote(h3("What is HACSim and how does it work?"),
-                                                      p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
+               style = "position: fixed; left: 0; top: 0; z-index: -1;",
+               img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
+             ),
+             tabsetPanel(type = "pills",tabPanel("About HACSim",
+                                                 style = "padding-top:5px;",
+                                                 tags$blockquote(h3("What is HACSim and how does it work?"),
+                                                                 p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
                         for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
                         sample sizes for DNA barcoding, specifically pertaining to recovery of total haplotype variation that may 
                         exist for a given species."),
-                                                      p("Most DNA barcoding studies conducted to date suggest sampling between 5-10 individuals per 
+                                                                 p("Most DNA barcoding studies conducted to date suggest sampling between 5-10 individuals per 
                         species due to research costs. However, it has been shown that low sample sizes can greatly 
                         underestimate haplotype diversity for geograpically-widespread taxa. The present algorithm 
                         is in place to more accurately determine sample sizes that are needed to uncover all putative 
                         haplotypes that may exist for a given species. Implications of such an approach include 
                         accelerating the construction and growth of DNA barcode reference libraries for species of 
                         interest within the Barcode of Life Data Systems", (tags$a(href = "http://www.boldsystems.org", "(BOLD)")), 
-                                                        "or similar database such as", (tags$a(href = "https://www.ncbi.nlm.nih.gov/genbank/", "GenBank."))),
-                                                      p("Within the simulation algorithm, species haplotypes are treated as distinct character labels 
+                                                                   "or similar database such as", (tags$a(href = "https://www.ncbi.nlm.nih.gov/genbank/", "GenBank."))),
+                                                                 p("Within the simulation algorithm, species haplotypes are treated as distinct character labels 
                         (1, 2, ...), where 1 denotes the most frequent haplotype, 2 denotes the second-most frequent 
                         haplotype, and so forth. The algorithm then randomly samples species haplotype labels in an 
                         iterative fashion, until all unique haplotypes have been observed. The idea is that levels of 
                         species haplotypic variation that are currently catalogued in BOLD can serve as proxies for 
                         total haplotype diversity that may exist for a given species."),
-                                                      p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
+                                                                 p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
                         (",em("e.g.,", .noWS = c("before")),"cytb)."),style="font-size:120%; color:black;
                   ")),
-                             tabPanel("More Information",tags$blockquote(h3("More Information"), 
-                                                                  p("Are you interested in doing even more with HACSim? Consider downloading the R package! See the HACSim", 
-                                                                    tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN",target = "_blank"),
-                                                                    "page for more details. You can also check out the HACSim R package repository on", 
-                                                                    tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.", target = "_blank")),style="font-size:120%; color:black;
+                         tabPanel("More Information",style = "padding-top:5px;",tags$blockquote(h3("More Information"), 
+                                                                                                p("Are you interested in doing even more with HACSim? Consider downloading the R package! See the HACSim", 
+                                                                                                  tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN",target = "_blank"),
+                                                                                                  "page for more details. You can also check out the HACSim R package repository on", 
+                                                                                                  tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.", target = "_blank")),style="font-size:120%; color:black;
                   ")),
-                             tabPanel(
-                               "Authors",
-                               tags$blockquote(h3("Jarrett D. Phillips"),
-                                               p("Email: phillipsjarrett1@gmail.com")),
-                               tags$blockquote(h3("Navdeep Singh"),
-                                               p("Email: navuonweb@gmail.com"))
-                             ),
-                             tabPanel("Citations",
-                                      tags$blockquote(h3("Citations"),
-                                                      br(),
-                                                      p("If you intend to use the HACSim R Shiny web app in your research, please cite the HACSim publication below. A publication for the app is currently in preparation."),
-                                                      tags$ul(
-                                                        tags$li(p("Chang, W.,", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A. and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
+                         tabPanel(
+                           "Authors",style = "padding-top:5px;",
+                           tags$blockquote(h3("Jarrett D. Phillips"),
+                                           p("Email: phillipsjarrett1@gmail.com")),
+                           tags$blockquote(h3("Navdeep Singh"),
+                                           p("Email: navuonweb@gmail.com"))
+                         ),
+                         tabPanel("Citations",style = "padding-top:5px;",
+                                  tags$blockquote(h3("Citations"),
+                                                  br(),
+                                                  p("If you intend to use the HACSim R Shiny web app in your research, please cite the HACSim publication below. A publication for the app is currently in preparation."),
+                                                  tags$ul(
+                                                    tags$li(p("Chang, W.,", "Cheng, J., Allaire, J.J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A. and Borges, B. (2021). shiny: Web Application Framework for R. R package version 1.6.0.
                                                         https://CRAN.R-project.org/package=shiny")),
-                                                        tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                                                    tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
                     using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6", .noWS = c("after")),"(192): 1-37."),href="Phillips et al. (2020).pdf", target = "_blank")),
-                                                        tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9", .noWS = c("after")),"(5): 2996-3010. DOI: 10.1002/ece3.4757."),href="Phillips et al. (2019).pdf", target = "_blank")),
-                                                        tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
+                                                    tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of genetic diversity within species: Implications for DNA barcoding. ",em("Ecology and Evolution,"), strong("9", .noWS = c("after")),"(5): 2996-3010. DOI: 10.1002/ece3.4757."),href="Phillips et al. (2019).pdf", target = "_blank")),
+                                                    tags$li(tags$a(p(strong("Phillips, J.D.", .noWS = c("after")),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort to describe intraspecific DNA barcode
                                                         haplotype diversity: examples from the ray-finned fishes (Chordata: Actinopterygii).",em("DNA Barcodes,"), strong("3", .noWS = c("after")),": 66-73. DOI: 10.1515/dna-2015-0008."),href="Phillips et al. (2015).pdf", target = "_blank")),
-                                                        tags$li(p("Ratnasingham, S. and Hebert, P.D.N. (2007). BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7", .noWS = c("after")),"(3): 355-364. URL: https://v4.boldsystems.org."))
-                                                      ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%"),
+                                                    tags$li(p("Ratnasingham, S. and Hebert, P.D.N. (2007). BOLD: The Barcode of Life Data System (www.barcodinglife.org).",em("Molecular Ecology Notes"), strong("7", .noWS = c("after")),"(3): 355-364. URL: https://v4.boldsystems.org."))
+                                                  ),style="font-size:120%; color:black;"))),style="position:fixed;top:15%"
                                             
                                                       
     ),
     tabPanel(
       style = "margin-left:0px;",
       div(
+        style = "margin-top:-7px;",
         actionBttn(
           inputId = "run_simulation",
           size = "sm",
