@@ -113,7 +113,9 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                         total haplotype diversity that may exist for a given species."),
                                                                  p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
                         (",em("e.g.,", .noWS = c("before")),"cytb)."),style="font-size:120%; color:black;
-                  ")),
+                  "),
+                                                 tags$blockquote(h3("App version"),
+                                                                 p("The HACSim R Shiny web app is currently running on HACSim 1.05."))),
                          tabPanel("More Information",style = "padding-top:5px;",tags$blockquote(h3("More Information"), 
                                                                                                 p("Are you interested in doing even more with HACSim? Consider downloading the R package! See the HACSim", 
                                                                                                   tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN",target = "_blank"),
@@ -325,7 +327,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                                                                       tags$text("Upload complete ✓"),
                                                                       numericInput(inputId = "N_load_d",
                                                                                    label = "Number of observed specimens (N)",
-                                                                                   value = 249,
+                                                                                   value = 349,
                                                                                    min = 2),
                                                                       
                                                                       numericInput(inputId = "Hstar_load_d",
