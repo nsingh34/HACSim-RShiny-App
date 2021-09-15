@@ -115,7 +115,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
                         (",em("e.g.,", .noWS = c("before")),"cytb)."),style="font-size:120%; color:black;
                   "),
                                                  tags$blockquote(h3("App version"),
-                                                                 p("The HACSim R Shiny web app is currently running on HACSim 1.05."))),
+                                                                 p("The HACSim R Shiny web app is currently running on version 1.05 of the HACSim R package."))),
                          tabPanel("More Information",style = "padding-top:5px;",tags$blockquote(h3("More Information"), 
                                                                                                 p("Are you interested in doing even more with HACSim? Consider downloading the R package! See the HACSim", 
                                                                                                   tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN",target = "_blank"),
