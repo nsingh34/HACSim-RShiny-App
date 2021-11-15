@@ -78,7 +78,7 @@ frequency distribution.",style="font-family: 'Times New Roman', Times, serif;fon
           style = "position:fixed;left:2%;bottom:5%;")
       ),
     tabPanel("Tutorial",
-             includeHTML("www/tutorial.html"),
+             includeHTML("tutorial.html"),
              div(
                style = "position: fixed; left: 0; top: 0; z-index: -1;",
                img(src = "about.jpg", style = "min-width: 100vw; min-height: 100vh;")
